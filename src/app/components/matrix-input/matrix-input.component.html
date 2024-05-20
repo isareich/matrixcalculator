@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Matrix Calculator
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<form [formGroup]="matrixForm" (ngSubmit)="onSubmit()">
+  <ion-item>
+    <ion-label position="floating">Rows</ion-label>
+    <ion-input type="number" formControlName="rows"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Columns</ion-label>
+    <ion-input type="number" formControlName="cols"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Generate Random Matrix</ion-label>
+    <ion-checkbox formControlName="generateRandom"></ion-checkbox>
+  </ion-item>
+  <ion-button (click)="generateMatrix()">Generate Matrix</ion-button>
+  
+  <div *ngIf="!generatedMatrix">
+    <div *ngFor="let row of matrix; let i = index">
+      <div *ngFor="let col of row; let j = index">
+        <ion-item>
+          <ion-label position="floating">Element [{{i}}, {{j}}]</ion-label>
+          <ion-input type="number" [(ngModel)]="matrix[i][j]"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+  </div>
+
+  <ion-button type="submit">Submit</ion-button>
+</form>

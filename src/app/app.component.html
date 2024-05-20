@@ -1,3 +1,13 @@
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
-</ion-app>
+<!-- src/app/app.component.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Matrix Transform
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-matrix-input (matrixData)="handleMatrixData($event)"></app-matrix-input>
+  <app-matrix-output [initialMatrix]="initialMatrix" [transformedMatrix]="transformedMatrix"></app-matrix-output>
+</ion-content>
